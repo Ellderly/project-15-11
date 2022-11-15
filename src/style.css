@@ -1,0 +1,141 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+}
+header{
+    text-align: center;
+    padding-top: 50px;
+}
+header button{
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    transition: .2s;
+}
+header button:hover{
+    background: #b0b0b0;
+}
+.container{
+    display: flex;
+    height: 100%;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+.container.centerCard{
+    justify-content: center;
+}
+
+.container .card{
+    max-width: 300px;
+    border: 1px solid gray;
+    padding: 20px 35px;
+    position: relative;
+    cursor: pointer;
+}
+.modal-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+.modal-wrapper.remove{
+    display: none;
+}
+.modal-wrapper .modal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 400px;
+    background: #fff;
+    border-radius: 10px;
+}
+.container .card .deleteCard{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 23px;
+    height: 23px;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+.container .card .deleteCard::before,
+.container .card .deleteCard::after{
+    content: '';
+    width: 70%;
+    height: 2px;
+    background: #000;
+    position: absolute;
+    left: 0;
+    top: 50%;
+}
+.container .card .deleteCard::before{
+    transform: rotate(45deg);
+}.container .card .deleteCard::after{
+     transform: rotate(-45deg);
+ }
+
+.toggleCard{
+    background: darkred;
+}
+.active{
+    background: forestgreen;
+    transition: .2s;
+}
+
+.preloader{
+    display: flex;
+    align-items: center;
+    width: 220px;
+    height: 135px;
+    position: relative;
+}
+.preloader:before{
+    content: '';
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    left: 0;
+    right: 0;
+    border-radius: 100px;
+    border: 9px dotted teal;
+    animation: preloader infinite 5s ease;
+}
+@keyframes preloader {
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(280deg);
+    }
+}
+
+@media(max-width: 768px) {
+    .container{
+        width: 101%;
+        flex-wrap: nowrap;
+        overflow: scroll;
+        padding-bottom: 1px;
+    }
+    .container.centerCard{
+        justify-content: left;
+    }
+}
+
+@media (max-width: 400px) {
+    header button{
+        padding: 4px 8px;
+    }
+}
